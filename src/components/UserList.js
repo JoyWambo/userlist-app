@@ -9,7 +9,6 @@ const UserList = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      setError(null);
       const data = await getUsers();
       setListOfUser(data);
     } catch (error) {
@@ -70,26 +69,29 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {listOfUser.map((user) => (
-              <tr
-                key={user.id}
-                className="hover:bg-indigo-50 transition-colors"
-              >
-                <td className="px-6 py-4 text-gray-900 font-medium">
-                  {user.name}
-                </td>
-                <td className="px-6 py-4 text-gray-600">@{user.username}</td>
-                <td className="px-6 py-4 text-indigo-600 hover:underline">
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
-                </td>
-                <td className="px-6 py-4 text-gray-600">{user.company.name}</td>
-              </tr>
-            ))}
+            {listOfUser &&
+              listOfUser.map((user) => (
+                <tr
+                  key={user.id}
+                  className="hover:bg-indigo-50 transition-colors"
+                >
+                  <td className="px-6 py-4 text-gray-900 font-medium">
+                    {user.name}
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">@{user.username}</td>
+                  <td className="px-6 py-4 text-indigo-600 hover:underline">
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">
+                    {user.company.name}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
       <div className="px-6 py-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500">
-        Showing {listOfUser.length} users
+        Showing {listOfUser?.length} users
       </div>
     </div>
   );
