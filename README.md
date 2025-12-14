@@ -1,10 +1,10 @@
-# 👥 User Management System - API Consumption
+# User Management System - API Consumption
 
-## 🎯 Project Overview
+## Project Overview
 
 This project fetches and displays a list of users from the JSONPlaceholder API using React Hooks and Axios.
 
-## ✅ Checkpoint Requirements Met
+## Checkpoint Requirements Met
 
 - [x] Created project using create-react-app
 - [x] Created UserList.js file in src folder
@@ -15,7 +15,7 @@ This project fetches and displays a list of users from the JSONPlaceholder API u
 - [x] Mapped listOfUser to display users
 - [x] Styled the app beautifully
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ```bash
 # Step 1: Create React app
@@ -33,7 +33,7 @@ npm install axios
 npm start
 ```
 
-## 📚 Technologies Used
+## Technologies Used
 
 - **React 18** - JavaScript library
 - **Axios** - HTTP client
@@ -41,7 +41,7 @@ npm start
 - **useEffect Hook** - Side effects
 - **JSONPlaceholder API** - Fake API for testing
 
-## 🔑 Key Concepts
+## Key Concepts
 
 ### useState Hook
 
@@ -74,17 +74,17 @@ setListOfUser(response.data);
 listOfUser.map((user) => <UserCard key={user.id} user={user} />);
 ```
 
-## 📸 Features
+## Features
 
-- ✅ Fetches 10 users from API
-- ✅ Loading state with spinner
-- ✅ Error handling with retry
-- ✅ Beautiful animated UI
-- ✅ Responsive design
-- ✅ User cards with details
-- ✅ Hover effects
+- Fetches 10 users from API
+- Loading state with spinner
+- Error handling with retry
+- Beautiful animated UI
+- Responsive design
+- User cards with details
+- Hover effects
 
-## 🎓 Learning Outcomes
+## Learning Outcomes
 
 - HTTP requests with Axios
 - React Hooks (useState, useEffect)
@@ -95,4 +95,4 @@ listOfUser.map((user) => <UserCard key={user.id} user={user} />);
 - Array mapping
 - Responsive design
 
-Perfect for learning API consumption in React! 🚀
+Perfect for learning API consumption in React!

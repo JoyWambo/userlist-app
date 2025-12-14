@@ -3,20 +3,24 @@ import { getUsers } from "../utils/api";
 
 const UserList = () => {
   const [listOfUser, setListOfUser] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await getUsers();
+      setListOfUser(data);
+    } catch (error) {
+      console.error(error);
+      setError("Failed to load users. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const data = await getUsers();
-        setListOfUser(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchUsers();
   }, []);
 
@@ -28,22 +32,41 @@ const UserList = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="text-center py-12 text-red-600">
+        <p>{error}</p>
+        <button
+          onClick={fetchUsers}
+          className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-      {/* Table Header */}
       <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
         <h2 className="text-lg font-semibold text-gray-800">User List</h2>
       </div>
-
-      {/* Scrollable Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200 text-sm text-left">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 font-medium text-gray-600">Name</th>
-              <th className="px-6 py-3 font-medium text-gray-600">Username</th>
-              <th className="px-6 py-3 font-medium text-gray-600">Email</th>
-              <th className="px-6 py-3 font-medium text-gray-600">Company</th>
+              <th scope="col" className="px-6 py-3 font-medium text-gray-600">
+                Name
+              </th>
+              <th scope="col" className="px-6 py-3 font-medium text-gray-600">
+                Username
+              </th>
+              <th scope="col" className="px-6 py-3 font-medium text-gray-600">
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3 font-medium text-gray-600">
+                Company
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -65,8 +88,6 @@ const UserList = () => {
           </tbody>
         </table>
       </div>
-
-      {/* Table Footer (Optional: Row Count) */}
       <div className="px-6 py-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500">
         Showing {listOfUser.length} users
       </div>

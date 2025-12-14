@@ -17,11 +17,3 @@ export const getUsers = async () => {
     console.error("Error fetching users:", error);
   }
 };
-
-export const createUsers = async (formData) => {
-  try {
-    const data = await api.post("/users", formData);
-  } catch (error) {
-    console.error("Error creating users:", error);
-  }
-};
