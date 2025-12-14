@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# 👥 User Management System - API Consumption
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🎯 Project Overview
 
-## Available Scripts
+This project fetches and displays a list of users from the JSONPlaceholder API using React Hooks and Axios.
 
-In the project directory, you can run:
+## ✅ Checkpoint Requirements Met
 
-### `npm start`
+- [x] Created project using create-react-app
+- [x] Created UserList.js file in src folder
+- [x] Installed axios
+- [x] Used JSONPlaceholder API
+- [x] Used axios inside useEffect to fetch data
+- [x] Used useState to save data in listOfUser
+- [x] Mapped listOfUser to display users
+- [x] Styled the app beautifully
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Installation & Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+# Step 1: Create React app
+npx create-react-app api-users-checkpoint
 
-### `npm test`
+# Step 2: Navigate to folder
+cd api-users-checkpoint
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Step 3: Install axios
+npm install axios
 
-### `npm run build`
+# Step 4: Copy all files
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Step 5: Start the app
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📚 Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React 18** - JavaScript library
+- **Axios** - HTTP client
+- **useState Hook** - State management
+- **useEffect Hook** - Side effects
+- **JSONPlaceholder API** - Fake API for testing
 
-### `npm run eject`
+## 🔑 Key Concepts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### useState Hook
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+const [listOfUser, setListOfUser] = useState([]);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Stores the fetched user data
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### useEffect Hook
 
-## Learn More
+```javascript
+useEffect(() => {
+  // Fetch data on component mount
+}, []);
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Fetches data when component loads
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Axios GET Request
 
-### Code Splitting
+```javascript
+const response = await axios.get("API_URL");
+setListOfUser(response.data);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Map Function
 
-### Analyzing the Bundle Size
+```javascript
+listOfUser.map((user) => <UserCard key={user.id} user={user} />);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📸 Features
 
-### Making a Progressive Web App
+- ✅ Fetches 10 users from API
+- ✅ Loading state with spinner
+- ✅ Error handling with retry
+- ✅ Beautiful animated UI
+- ✅ Responsive design
+- ✅ User cards with details
+- ✅ Hover effects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🎓 Learning Outcomes
 
-### Advanced Configuration
+- HTTP requests with Axios
+- React Hooks (useState, useEffect)
+- API consumption
+- Async/await
+- Error handling
+- Loading states
+- Array mapping
+- Responsive design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Perfect for learning API consumption in React! 🚀
